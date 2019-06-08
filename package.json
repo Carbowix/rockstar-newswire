@@ -1,0 +1,22 @@
+{
+  "name": "newswire",
+  "version": "1.0.0",
+  "description": "GTA Online news retriever",
+  "main": "newswire.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "news",
+    "gta-online",
+    "GTAO",
+    "GTAO-NEWS",
+    "newswire"
+  ],
+  "author": "Carbowix",
+  "license": "MIT",
+  "dependencies": {
+    "got": "^9.6.0",
+    "level": "^5.0.1"
+  }
+}
