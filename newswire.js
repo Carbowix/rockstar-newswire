@@ -74,6 +74,7 @@ async function sendArticle(article) {
             },
             "title": article.title,
             "url": article.link,
+            "description": tags,
             "color": 15258703,
             "fields": [{
                 "name": 'Summary',
