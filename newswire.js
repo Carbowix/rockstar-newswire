@@ -8,11 +8,11 @@ let db = level('newswire');
 async function getNewArticle() {
     return processRequest().then(async (res) => {
         let article = res.posts[0];
-        let check = await checkArticleExists(article.id);
+        let check = await checkArticleExists(article.id.toString());
         if (!check) {
             let tags = [];
             await article.primary_tags.map(tag => tags.push(tag.name))
-            await addArticle(article.id, article.link);
+            await addArticle(article.idtoString(), article.link);
             return {
                 title: article.title,
                 content: article.blurb_short,
