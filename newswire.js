@@ -12,7 +12,7 @@ async function getNewArticle() {
         if (!check) {
             let tags = [];
             await article.primary_tags.map(tag => tags.push(tag.name))
-            await addArticle(article.idtoString(), article.link);
+            await addArticle(article.id.toString(), article.link);
             return {
                 title: article.title,
                 content: article.blurb_short,
