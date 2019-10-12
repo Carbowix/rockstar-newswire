@@ -53,7 +53,7 @@ async function checkArticleExists(article) {
 
 async function sanitfy(text) {
     text = text
-        .replace('<span class="subtitle"> ', '(')
+        .replace('<span class="subtitle">', '(')
         .replace('</span>', ')')
         .replace(/<\/?strong[^>]*>/g, '**')
         .replace(/<\s*a[^>]*>(.*?)<\s*\/s*a>/i, '')
