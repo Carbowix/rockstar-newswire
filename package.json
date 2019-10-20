@@ -1,7 +1,7 @@
 {
   "name": "newswire",
   "version": "1.0.0",
-  "description": "GTA Online news retriever",
+  "description": "GTA Online news retriever to discord",
   "main": "newswire.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,11 @@
     "gta-online",
     "GTAO",
     "GTAO-NEWS",
-    "newswire"
+    "newswire",
+    "discord",
+    "discord-webhook",
+    "discord-gtav",
+    "discord-gtav-news"
   ],
   "author": "Carbowix",
   "license": "MIT",
