@@ -7,3 +7,5 @@ GTA Online news feed from Rockstar's newswire to your discord server.
 - run it with `node newswire.js`
 - Feed refreshes every 2 hours to make sure its up-to-date.
 
+## Demo
+![](./demo.png "Example of news feed.")
