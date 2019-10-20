@@ -1,4 +1,4 @@
-# newswire
+# gtao-newswire
 GTA Online news feed from Rockstar's newswire to your discord server.
 
 ## Install
