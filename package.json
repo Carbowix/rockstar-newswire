@@ -1,26 +1,32 @@
 {
-  "name": "newswire",
+  "name": "rockstar-newswire",
   "version": "1.0.0",
-  "description": "GTA Online news retriever to discord",
+  "description": "Bring GTA V/Read dead 2/Latest News to your discord server.",
   "main": "newswire.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "news",
+    "gtav",
+    "rdr2",
+    "rdr2-online",
     "gta-online",
+    "RDR2O",
+    "RDR2O-NEWS",
     "GTAO",
     "GTAO-NEWS",
     "newswire",
     "discord",
     "discord-webhook",
+    "webhook",
     "discord-gtav",
-    "discord-gtav-news"
+    "discord-gtav-news",
+    "discord-rdr2",
+    "discord-rdr2-news",
+    "rockstar-newswire",
+    "rockstar-newswire-discord"
   ],
   "author": "Carbowix",
   "license": "MIT",
   "dependencies": {
-    "got": "^9.6.0",
-    "level": "^5.0.1"
+    "got": "^9.6.0"
   }
 }
