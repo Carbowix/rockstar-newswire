@@ -1,7 +1,7 @@
 {
   "name": "rockstar-newswire",
   "version": "1.0.0",
-  "description": "Bring GTA V/Read dead 2/Latest News to your discord server.",
+  "description": "Bring GTA V/Red dead 2/Latest News to your discord server.",
   "main": "newswire.js",
   "keywords": [
     "news",
