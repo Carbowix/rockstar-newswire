@@ -1,6 +1,8 @@
 # rockstar-newswire
 Rockstar's [newswire](https://www.rockstargames.com/newswire) feed to your discord server. Supports (Latest, GTA V, Red Dead 2 Redemption)
 
+## NOTE: This app is no longer functioning due to changes with the newswire website API. I'll be patching it as soon as I have time.
+
 ## Install
 - Install the required Node packages via `npm i` or `yarn install`
 
