@@ -27,6 +27,7 @@
   "author": "Carbowix",
   "license": "MIT",
   "dependencies": {
-    "got": "^9.6.0"
+    "got": "^11.8.2",
+    "puppeteer": "^8.0.0"
   }
 }
