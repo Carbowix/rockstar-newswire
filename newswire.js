@@ -11,11 +11,20 @@ const genres = {
     rdr2: 736,
 };
 const puppeteer = require('puppeteer');
-const request = require('got');
+const {
+    request
+} = require('https');
 const fs = require('fs');
 const newsDir = './newswire.json';
-const mainLink = 'https://graph.rockstargames.com/';
+const mainLink = 'https://graph.rockstargames.com?';
 const refreshInterval = 7.2e+6; // 2 hours in milliseconds. If you would like to change it (http://www.unitconversion.org/time/seconds-to-milliseconds-conversion.html)
+const requestOptions = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    timeout: 1000,
+};
 let articles, newsHash;
 
 fs.readFile(newsDir, 'utf8', (err, jsonString) => {
@@ -70,12 +79,21 @@ class newswire {
                 }
             }]
         };
-        request.post(this.webhook, {
-            body: JSON.stringify(embed),
-            headers: {
-                'content-type': 'application/json'
-            }
+        const req = request(this.webhook, requestOptions, (res) => {
+            if (res.statusCode < 200 || res.statusCode > 299)
+                console.error('[ERROR] Unable to process request: ' + res.statusCode + '\nReason: ' + res.statusMessage);
         });
+        req.on('error', (err) => {
+            console.error(err);
+        })
+
+        req.on('timeout', () => {
+            req.destroy()
+            console.error('[ERROR] Request timedout');
+        })
+
+        req.write(JSON.stringify(embed));
+        req.end();
     }
 
     async getNewArticle() {
@@ -90,8 +108,9 @@ class newswire {
                     return new TypeError('[ERROR] Rockstar API couldn\'t retrieve articles.');
                 }
             }
+
             let article = res.data.posts.results[0];
-            let check = await checkArticleExists(article.id);
+            let check = articles && articles[article.id]
             if (!check) {
                 let tags = [];
                 article.url = 'https://www.rockstargames.com' + article.url;
@@ -127,11 +146,25 @@ class newswire {
                     }
                 })]
             ]);
-            const response = await request.post(mainLink, {
-                searchParams: searchParams,
-                json: true
-            }).catch(reject);
-            resolve(JSON.parse(response.body));
+            
+            const req = request(mainLink + searchParams.toString(), requestOptions, (res) => {
+                if (res.statusCode < 200 || res.statusCode > 299)
+                    reject(new Error('[ERROR] Unable to process request: ' + res.statusCode + '\nReason: ' + res.statusMessage));
+                res.setEncoding('utf8');
+                let responseBody = "";
+                res.on('data', (chunk) => {
+                    responseBody += chunk;
+                });
+
+                res.on('end', () => {
+                    resolve(JSON.parse(responseBody));
+                });
+            });
+            req.on('error', (err) => {
+                reject(err);
+            });
+
+            req.end();
         });
     }
 }
@@ -141,7 +174,7 @@ function addArticle(article, url) {
         if (!articles[article]) {
             articles[article] = url;
             fs.writeFile(newsDir, JSON.stringify(articles, null, 2), (err) => {
-                if (err) console.log('Failed to save articles to db due ' + err);
+                if (err) console.error('[ERROR] Failed to save articles to db due ' + err);
             });
         } else {
             console.log('Article ID: ' + article + ' already exists in database.');
@@ -168,7 +201,6 @@ async function getHashToken() {
                             hash = JSON.parse(pair[1])['persistedQuery']['sha256Hash'];
                             interceptedRequest.abort();
                             browser.close();
-                            console.log(hash);
                             res(hash);
                         }
                     }
@@ -182,9 +214,5 @@ async function getHashToken() {
         }
     });
 };
-
-function checkArticleExists(articleID) {
-    return (articles && articles[articleID]);
-}
 
 module.exports = newswire;

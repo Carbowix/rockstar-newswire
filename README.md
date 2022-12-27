@@ -1,5 +1,7 @@
 # rockstar-newswire
-Bring Rockstar [newswire](https://www.rockstargames.com/newswire) feed to your discord server.
+A lightweight Rockstar [newswire](https://www.rockstargames.com/newswire) tracker to bring latest news to your platform.
+
+Currently supports discord [webhooks](https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks) and you can easily change it to return URL for to be used on any other platform.
 
 ## Install
 - Install the required Node packages via `npm i` or `yarn install`
@@ -17,13 +19,13 @@ Bring Rockstar [newswire](https://www.rockstargames.com/newswire) feed to your d
 - `creator` (Creator jobs articles featured by Rockstar)
 - `fanart` (General fans' art articles from any Rockstar game)
 - `fanvideos` (General fans' showoff videos articles from any Rockstar game)
-- `gtav` (GTA V general news)
+- `gtav` (GTA: V general news)
 - `music` (Music production articles)
 - `latest` (Latest news from any type that shows on newswire homepage)
 - `rdr2` (Red dead redemption 2 general news)
 - `rockstar` (Rockstar company updates)
 - `tips` (General game tips from Rockstar)
-- `updates` (Any Released game updates)
+- `updates` (Any released game updates)
 
 ## Notes
 - You require discord [webhook URL](https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks).
@@ -36,5 +38,4 @@ Bring Rockstar [newswire](https://www.rockstargames.com/newswire) feed to your d
 
 ## Credits
 - Rockstar [newswire](https://www.rockstargames.com/newswire).
-- [got](https://www.npmjs.com/package/got) for lightweight simple https requests.
 - [puppeteer](https://www.npmjs.com/package/puppeteer) for their virtual browser network tracing.
