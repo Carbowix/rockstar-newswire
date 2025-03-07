@@ -19,6 +19,7 @@ Currently supports discord [webhooks](https://support.discordapp.com/hc/en-us/ar
 - `creator` (Creator jobs articles featured by Rockstar)
 - `fanart` (General fans' art articles from any Rockstar game)
 - `fanvideos` (General fans' showoff videos articles from any Rockstar game)
+- `gtavi` (GTA: VI general news)
 - `gtav` (GTA: V general news)
 - `music` (Music production articles)
 - `latest` (Latest news from any type that shows on newswire homepage)
