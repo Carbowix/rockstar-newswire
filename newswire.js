@@ -3,6 +3,7 @@ const genres = {
     music: 30,
     rockstar: 43,
     tips: 121,
+    gtavi: 666,
     gtav: 702,
     updates: 705,
     fanvideos: 706,
